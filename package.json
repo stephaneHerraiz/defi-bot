@@ -1,0 +1,33 @@
+{
+  "name": "defi-bot",
+  "version": "1.0.0",
+  "author": "Stéphane Herraiz <stephane.herraiz@vinci-construction.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node dist/index.js"
+    },
+  "dependencies": {
+    "@aave/contract-helpers": "^1.32.1",
+    "@aave/math-utils": "^1.32.1",
+    "@bgd-labs/aave-address-book": "^4.15.1",
+    "@types/es6-shim": "^0.31.45",
+    "bignumber.js": "^9.1.2",
+    "config": "^3.3.12",
+    "dayjs": "^1.11.13",
+    "discord.js": "^14.18.0",
+    "ethers": "5",
+    "install": "^0.13.0",
+    "pg": "^8.14.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.21"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2"
+  }
+}

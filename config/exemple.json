@@ -1,0 +1,19 @@
+{
+    "aave": {
+      "alert-threshold": 2
+    },
+    "database": {
+      "host": "database",
+      "port": 5432,
+      "database": "aave-store",
+      "username": "postgres",
+      "password": "postgres"
+    },
+    "discord-webhook": "https://discord.com/api/webhooks/xxxx/xxxx",
+    "accounts" : [
+      {
+        "label": "my Account",
+        "address":  "0x..."
+      }
+    ]
+  }
