@@ -77,13 +77,13 @@ export class AaveUtils {
         // Object containing array of pool reserves and market base currency data
         // { reservesArray, baseCurrencyData }
         this.reserves = await this.poolDataProviderContract.getReservesHumanized({
-            lendingPoolAddressProvider: this.market.POOL_ADDRESSES_PROVIDER,
+            lendingPoolAddressProvider: this.market.marketAddress.POOL_ADDRESSES_PROVIDER,
         });
         
         // Object containing array or users aave positions and active eMode category
         // { userReserves, userEmodeCategoryId }
         this.userReserves = await this.poolDataProviderContract.getUserReservesHumanized({
-            lendingPoolAddressProvider: this.market.POOL_ADDRESSES_PROVIDER,
+            lendingPoolAddressProvider: this.market.marketAddress.POOL_ADDRESSES_PROVIDER,
             user: currentAccount.address,
         });
         
@@ -91,14 +91,14 @@ export class AaveUtils {
         // this.reserveIncentives =
         //     await this.incentiveDataProviderContract.getReservesIncentivesDataHumanized({
         //     lendingPoolAddressProvider:
-        //         this.market.POOL_ADDRESSES_PROVIDER,
+        //         this.market.marketAddress.POOL_ADDRESSES_PROVIDER,
         //     });
         
         // // Dictionary of claimable user incentives
         // this.userIncentives =
         //     await this.incentiveDataProviderContract.getUserReservesIncentivesDataHumanized({
         //     lendingPoolAddressProvider:
-        //         this.market.POOL_ADDRESSES_PROVIDER,
+        //         this.market.marketAddress.POOL_ADDRESSES_PROVIDER,
         //     user: currentAccount.address,
         //     });
         this.currentAccount = currentAccount;

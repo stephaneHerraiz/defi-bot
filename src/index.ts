@@ -52,7 +52,9 @@ const config = require('config');
     .setAuthor({ name: 'AAVE bot', iconURL: 'https://i.imgur.com/wsRom3G.png'})
     .setColor(0xFF0000)
     .setTimestamp()
-    for(const market of AaveMarkets) {
+
+    const marketEntities = await marketRepository.find();
+    for(const market of marketEntities) {
       const aaveUtils = new AaveUtils(market.chain);
       await aaveUtils.fetchContractData(account);
       const marketStatus = aaveUtils.getMarketStatus();

@@ -10,6 +10,7 @@ export class AaveMarketEntity {
     rpcProviver!: string;
 
     constructor(market: any) {
+        if(market === undefined) return;
         this.chain = market.chain;
         this.rpcProviver = market.rpcProviver;
     }

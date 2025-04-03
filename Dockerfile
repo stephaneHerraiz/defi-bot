@@ -25,6 +25,8 @@ RUN yarn install --production
 
 COPY --from=build /app/build ./dist
 
+COPY --from=build /app/config /root/config
+
 # Copy the crontab into place
 COPY --from=build /app/crontab /etc/crontabs/root
 
