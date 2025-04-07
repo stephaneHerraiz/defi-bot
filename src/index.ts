@@ -48,8 +48,8 @@ const config = require('config');
   for(const account of accounts) {
     console.log(`Retreiving AAVE markets from "${account.label}" account`);
     const embed = new EmbedBuilder()
-    .setTitle(`AAVE summary - ${account.label}`)
-    .setAuthor({ name: 'AAVE bot', iconURL: 'https://i.imgur.com/wsRom3G.png'})
+    .setTitle(`AAVE alert - ${account.label}`)
+    .setAuthor({ name: 'AAVE alert bot', iconURL: 'https://i.imgur.com/wsRom3G.png'})
     .setColor(0xFF0000)
     .setTimestamp()
 
@@ -63,6 +63,7 @@ const config = require('config');
             marketStatus.healthFactor < aaveAlertThreshold &&
             (!lastMarketStatus || lastMarketStatus.healthFactor > aaveAlertThreshold)) {
         sendAlert = true;
+        embed.setDescription(`Health factor under ${aaveAlertThreshold} for ${account.label} account on ${market.chain} market`)
         embed.addFields({ name: 'Chain', value: market.chain});
         embed.addFields({ name: 'Health Factor', value: `${marketStatus.healthFactor.toFixed(2).toString()}`, inline: true });
         embed.addFields({ name: 'Total borrow', value: `${marketStatus.totalBorrows.toFixed(2)}$`, inline: true });
@@ -84,7 +85,7 @@ const config = require('config');
       }
     }
     if (sendAlert) {
-      webhookClient.send({
+      await webhookClient.send({
         username: 'aave-bot',
         avatarURL: 'https://i.imgur.com/AfFp7pu.png',
         embeds: [embed],
